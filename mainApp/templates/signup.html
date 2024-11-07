@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}
+<title>Essence - Fashion World | Signup</title>
+{% endblock %}
+{% block body %}
+<div class="container-fluid w-100 py-3">
+    <div class="center m-auto border p-5" style="width:50%">
+        <h6 class="text-center"><span class="text-primary" style="font-size: 25px;"> Create </span> an Account </h6>
+        {% if messages %}
+        {% for m in messages %}
+        <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+            {{m}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <form action="/signup/" method="post">
+            {% csrf_token %}
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="name" class="form-label"> Full Name </label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Full Name"
+                        required>
+                </div>
+                <div class="col-md-6">
+                    <label for="username" class="form-label"> User Name </label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter User Name"
+                        required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="email" class="form-label"> Email </label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address"
+                        required>
+                </div>
+                <div class="col-md-6">
+                    <label for="phone" class="form-label"> Phone </label>
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Phone Number"
+                        required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="password" class="form-label"> Password </label>
+                    <input type="password" class="form-control" id="password" name="password"
+                        placeholder="Enter Password" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="confirm_password" class="form-label"> Confirm Password </label>
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password"
+                        placeholder="Enter Confirm Password" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary btn-sm"> Sign Up </button>
+            </div>
+        </form>
+        <a href="/login/" class="text-primary"> Already User? Login To Your Account </a>
+    </div>
+
+</div>
+{% endblock %}
